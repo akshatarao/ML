@@ -17,7 +17,7 @@ Travelling Salesman - Reversed
 Max Flow
 Four Peaks
 
-Use both older datasets with these algorithms(Car Choice)
+Use both older datasets with these algorithms(If the data sets have discrete parameter spaces)
 Find optimal values for the parameters for Genetic, MIMIC, Simulated Annealing
 
 Tests
