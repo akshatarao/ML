@@ -19,13 +19,22 @@ public class MIMICEvaluator implements IRandomizedOptimizationEvaluator{
 		
 		double optimalValue;
 		
+		System.out.println("\n-------------------");
+    	System.out.println("\nMIMIC");
+    	System.out.println("\n-------------------");
+    	System.out.println("\nNumber of Iterations: " + numberOfIterations);
+
 		Distribution df = new DiscreteDependencyTree(.1, ranges); 
 		ProbabilisticOptimizationProblem pop = new GenericProbabilisticOptimizationProblem(evaluationFunction, distribution, df);		
 
 		MIMIC mimic = new MIMIC(numberOfGeneratedSamples, numberOfSamplesToKeep, pop);
         FixedIterationTrainer fit = new FixedIterationTrainer(mimic, numberOfIterations);
-        //NOTE: Seemd to have lesser iterations..?
+
+    	long startTime = System.currentTimeMillis();
         fit.train();
+        long endTime = System.currentTimeMillis();
+        System.out.println("\nRunning time: " + (endTime - startTime));
+
         optimalValue = evaluationFunction.value(mimic.getOptimal());
 		
 		return optimalValue;

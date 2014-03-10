@@ -33,7 +33,7 @@ public class RandomizedOptimizationEvaluator {
 			evaluator = new MIMICEvaluator();
 		}
 
-	    optimalValue = evaluator.getOptimalValue(evaluationFunction, distribution, ranges, NUMBER_OF_ITERATIONS);
+	    optimalValue = evaluator.getOptimalValue(evaluationFunction, distribution, ranges, 100);
 
 	    return optimalValue;
 	}

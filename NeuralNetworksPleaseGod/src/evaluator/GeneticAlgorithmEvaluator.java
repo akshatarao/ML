@@ -22,14 +22,24 @@ public class GeneticAlgorithmEvaluator implements IRandomizedOptimizationEvaluat
 			Distribution distribution, int[] ranges, int numberOfIterations) {
 		
 		double optimalValue;
-		
+
+		System.out.println("\n-------------------");
+	  	System.out.println("\nGenetic Algorithm");
+    	System.out.println("\n-------------------");
+    	System.out.println("\nNumber of Iterations: " + numberOfIterations);
+  
 	    MutationFunction mf = new DiscreteChangeOneMutation(ranges);
         CrossoverFunction cf = new UniformCrossOver();
         GeneticAlgorithmProblem gap = new GenericGeneticAlgorithmProblem(evaluationFunction, distribution, mf, cf);
         
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(populationSize, toMate, toMutate, gap);
+        
         FixedIterationTrainer fit = new FixedIterationTrainer(ga, 1000);
+        
+        long startTime = System.currentTimeMillis();
         fit.train();
+        long endTime = System.currentTimeMillis();
+        System.out.println("\nRunning time: " + (endTime - startTime));
         
         optimalValue = evaluationFunction.value(ga.getOptimal());
 		

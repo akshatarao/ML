@@ -14,9 +14,9 @@ import static evaluator.RandomizedOptimizationEvaluator.*;
 
 public class KnapsackProblemEvaluator{
 	
-	private static final int ITEM_COPIES = 4;
+	private static final int ITEM_COPIES = 6;
 	private static final int NUMBER_OF_ITEMS = 10;
-	private static final int MAX_WEIGHT = 50;
+	private static final int MAX_WEIGHT = 30;
 	private static final int MAX_VOLUME = 30;
 	
     private static final double KNAPSACK_VOLUME = 
@@ -50,19 +50,19 @@ public class KnapsackProblemEvaluator{
         
         optimalValue = evaluator.getOptimizedValue(RANDOM_HILL_CLIMBING, evaluationFunction, distribution, ranges);
      
-        System.out.println("\nRandom Hill Climbing: " + optimalValue);
+        System.out.println("\nOptimal Value: " + optimalValue);
      
         optimalValue = evaluator.getOptimizedValue(SIMULATED_ANNEALING, evaluationFunction, distribution, ranges);
         
-        System.out.println("\nSimulated Annealing: " + optimalValue);
+        System.out.println("\nOptimal Value: " + optimalValue);
      
         optimalValue = evaluator.getOptimizedValue(GENETIC_ALGORITHM, evaluationFunction, distribution, ranges);
         
-        System.out.println("\nGenetic Algorithms: " + optimalValue);
+        System.out.println("\nOptimal Value: " + optimalValue);
      
         optimalValue = evaluator.getOptimizedValue(MIMIC, evaluationFunction, distribution, ranges);
         
-        System.out.println("\nMIMIC: "+ optimalValue);
+        System.out.println("\nOptimal Value: " + optimalValue);
      
         
     }

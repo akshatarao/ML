@@ -26,13 +26,23 @@ public class SimulatedAnnealingEvaluator implements IRandomizedOptimizationEvalu
     {
     	double optimalVolume;
 
+    	System.out.println("\n-------------------");
+    	System.out.println("\nSimulated Annealing");
+    	System.out.println("\n-------------------");
+    	System.out.println("\nNumber of Iterations: " + numberOfIterations);
+    	
     	NeighborFunction neighborFunction = new DiscreteChangeOneNeighbor(ranges);
     	
     	HillClimbingProblem hcp = new GenericHillClimbingProblem(evaluationFunction, distribution, neighborFunction);
     	SimulatedAnnealing sa = new SimulatedAnnealing(startingTemperature, coolingExponent, hcp);
-        
     	FixedIterationTrainer fit = new FixedIterationTrainer(sa, numberOfIterations);
-        
+ 
+    	long startTime = System.currentTimeMillis();
+    	fit.train();
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("\nRunning time: " + (endTime - startTime));
+
     	optimalVolume = evaluationFunction.value(sa.getOptimal());
         
         return optimalVolume;
